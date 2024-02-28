@@ -8,13 +8,29 @@
 import Foundation
 
 
-class AppState: ObservableObject {
-    @Published var count = 0
-    @Published var favoritePrimes: [Int] = []
-    
-    @Published var loggedInUser: User? = nil
-    @Published var activityFeed: [Activity] = []
-    
+enum CounterAction {
+  case decrTapped
+  case incrTapped
+}
+enum PrimeModalAction {
+  case saveFavoritePrimeTapped
+  case removeFavoritePrimeTapped
+}
+enum FavoritePrimesAction {
+  case deleteFavoritePrimes(IndexSet)
+}
+enum AppAction {
+  case counter(CounterAction)
+  case primeModal(PrimeModalAction)
+  case favoritePrimes(FavoritePrimesAction)
+}
+
+struct AppState {
+    var count = 0
+    var favoritePrimes: [Int] = []
+    var loggedInUser: User? = nil
+    var activityFeed: [Activity] = []
+   
     struct Activity {
         let timestamp: Date
         let type: ActivityType
@@ -32,50 +48,41 @@ class AppState: ObservableObject {
     }
 }
 
-extension AppState {
-    func addFavoritePrime() {
-        self.favoritePrimes.append(self.count)
-        self.activityFeed.append(Activity(timestamp: Date(), type: .addedFavoritePrime(self.count)))
+func appReducer(value: inout AppState, action: AppAction) -> Void {
+  switch action {
+  case .counter(.decrTapped):
+    value.count -= 1
+
+  case .counter(.incrTapped):
+    value.count += 1
+
+  case .primeModal(.saveFavoritePrimeTapped):
+    value.favoritePrimes.append(value.count)
+    value.activityFeed.append(.init(timestamp: Date(), type: .addedFavoritePrime(value.count)))
+
+  case .primeModal(.removeFavoritePrimeTapped):
+    value.favoritePrimes.removeAll(where: { $0 == value.count })
+    value.activityFeed.append(.init(timestamp: Date(), type: .removedFavoritePrime(value.count)))
+
+  case let .favoritePrimes(.deleteFavoritePrimes(indexSet)):
+    for index in indexSet {
+      let prime = value.favoritePrimes[index]
+      value.favoritePrimes.remove(at: index)
+      value.activityFeed.append(.init(timestamp: Date(), type: .removedFavoritePrime(prime)))
     }
-    
-    func removeFavoritePrime(_ prime: Int) {
-        self.favoritePrimes.removeAll(where: { $0 == prime })
-        self.activityFeed.append(Activity(timestamp: Date(), type: .removedFavoritePrime(prime)))
-    }
-    
-    func removeFavoritePrime() {
-        self.removeFavoritePrime(self.count)
-    }
-    
-    func removeFavoritePrimes(at indexSet: IndexSet) {
-        for index in indexSet {
-            self.removeFavoritePrime(self.favoritePrimes[index])
-        }
-    }
+  }
 }
 
+final class Store<Value, Action>: ObservableObject {
+  let reducer: (inout Value, Action) -> Void
+  @Published private(set) var value: Value
 
-class FavoritePrimesState: ObservableObject {
-    private var state: AppState
-    init(state: AppState) {
-        self.state = state
-    }
-    
-    var favoritePrimes: [Int] {
-        get {
-            self.state.favoritePrimes
-        }
-        set {
-            self.state.favoritePrimes = newValue
-        }
-    }
-    
-    var activityFeed: [AppState.Activity] {
-        get {
-            self.state.activityFeed
-        }
-        set {
-            self.state.activityFeed = newValue
-        }
-    }
+  init(initialValue: Value, reducer: @escaping (inout Value, Action) -> Void) {
+    self.reducer = reducer
+    self.value = initialValue
+  }
+
+  func send(_ action: Action) {
+    self.reducer(&self.value, action)
+  }
 }

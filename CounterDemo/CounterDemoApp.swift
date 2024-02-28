@@ -11,7 +11,7 @@ import SwiftUI
 struct CounterDemoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(state: AppState())
+            ContentView(store: Store(initialValue: AppState(), reducer: appReducer))
         }
     }
 }

@@ -8,19 +8,14 @@
 import SwiftUI
 
 struct FavoritePrimeView: View {
-    @ObservedObject var state: FavoritePrimesState
+    @ObservedObject var store: Store<AppState, AppAction>
     var body: some View {
         List{
-            ForEach(self.state.favoritePrimes, id: \.self) { prime in
+            ForEach(self.store.value.favoritePrimes, id: \.self) { prime in
                 Text("\(prime)")
             }
             .onDelete { indexSet in
-                for index in indexSet {
-                    let prime = self.state.favoritePrimes[index]
-                    self.state.favoritePrimes.remove(at: index)
-                    self.state.activityFeed.append(.init(timestamp: Date(), type: .removedFavoritePrime(prime)))
-
-                }
+                self.store.send(.favoritePrimes(.deleteFavoritePrimes(indexSet)))
             }
         }
             .navigationTitle("Favorite Primes")
@@ -28,5 +23,5 @@ struct FavoritePrimeView: View {
 }
 
 #Preview {
-    FavoritePrimeView(state: FavoritePrimesState(state: AppState()))
+    FavoritePrimeView(store: Store(initialValue: AppState(), reducer: appReducer))
 }
