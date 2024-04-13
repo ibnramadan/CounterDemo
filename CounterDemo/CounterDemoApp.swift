@@ -12,8 +12,8 @@ struct CounterDemoApp: App {
     var body: some Scene {
         WindowGroup {
            // ContentView(store: Store(initialValue: AppState(), reducer: appReducer))
-            ContentView(store: Store(initialState: ContentViewReducer.State(), reducer: {
-                ContentViewReducer()
+            ContentView(store: Store(initialState: CounterFeature.State(), reducer: {
+                CounterFeature()
             }))
         }
     }
