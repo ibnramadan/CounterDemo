@@ -7,28 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4B1B83422B6FBCE9008E3B88 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1B83412B6FBCE9008E3B88 /* CounterView.swift */; };
-		4B3B0CDA2B7E26D000D0A30A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3B0CD92B7E26D000D0A30A /* Model.swift */; };
-		4B59294F2B8216EB00557024 /* FavoritePrimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B59294E2B8216EA00557024 /* FavoritePrimeView.swift */; };
 		4B61CD512B6F8601001F79A7 /* CounterDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B61CD502B6F8601001F79A7 /* CounterDemoApp.swift */; };
 		4B61CD532B6F8601001F79A7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B61CD522B6F8601001F79A7 /* ContentView.swift */; };
 		4B61CD552B6F8605001F79A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B61CD542B6F8605001F79A7 /* Assets.xcassets */; };
 		4B61CD582B6F8605001F79A7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B61CD572B6F8605001F79A7 /* Preview Assets.xcassets */; };
-		4BC2CD482B7262F000DA464F /* IsPrimeModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC2CD472B7262F000DA464F /* IsPrimeModalView.swift */; };
-		4BCE700B2B8348DF005048EB /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCE700A2B8348DF005048EB /* AppState.swift */; };
+		4B79F34F2BA83D9F006348EF /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 4B79F34E2BA83D9F006348EF /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4B1B83412B6FBCE9008E3B88 /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
-		4B3B0CD92B7E26D000D0A30A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		4B59294E2B8216EA00557024 /* FavoritePrimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePrimeView.swift; sourceTree = "<group>"; };
+		4B0396002BA9A5E500283C2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4B61CD4D2B6F8601001F79A7 /* CounterDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CounterDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B61CD502B6F8601001F79A7 /* CounterDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterDemoApp.swift; sourceTree = "<group>"; };
 		4B61CD522B6F8601001F79A7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4B61CD542B6F8605001F79A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B61CD572B6F8605001F79A7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		4BC2CD472B7262F000DA464F /* IsPrimeModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsPrimeModalView.swift; sourceTree = "<group>"; };
-		4BCE700A2B8348DF005048EB /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B79F34F2BA83D9F006348EF /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,13 +54,9 @@
 		4B61CD4F2B6F8601001F79A7 /* CounterDemo */ = {
 			isa = PBXGroup;
 			children = (
+				4B0396002BA9A5E500283C2B /* Info.plist */,
 				4B61CD502B6F8601001F79A7 /* CounterDemoApp.swift */,
 				4B61CD522B6F8601001F79A7 /* ContentView.swift */,
-				4B1B83412B6FBCE9008E3B88 /* CounterView.swift */,
-				4BC2CD472B7262F000DA464F /* IsPrimeModalView.swift */,
-				4B59294E2B8216EA00557024 /* FavoritePrimeView.swift */,
-				4B3B0CD92B7E26D000D0A30A /* Model.swift */,
-				4BCE700A2B8348DF005048EB /* AppState.swift */,
 				4B61CD542B6F8605001F79A7 /* Assets.xcassets */,
 				4B61CD562B6F8605001F79A7 /* Preview Content */,
 			);
@@ -98,6 +87,9 @@
 			dependencies = (
 			);
 			name = CounterDemo;
+			packageProductDependencies = (
+				4B79F34E2BA83D9F006348EF /* ComposableArchitecture */,
+			);
 			productName = CounterDemo;
 			productReference = 4B61CD4D2B6F8601001F79A7 /* CounterDemo.app */;
 			productType = "com.apple.product-type.application";
@@ -126,6 +118,9 @@
 				Base,
 			);
 			mainGroup = 4B61CD442B6F8601001F79A7;
+			packageReferences = (
+				4B79F34D2BA83D9F006348EF /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = 4B61CD4E2B6F8601001F79A7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -152,13 +147,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B59294F2B8216EB00557024 /* FavoritePrimeView.swift in Sources */,
-				4B3B0CDA2B7E26D000D0A30A /* Model.swift in Sources */,
-				4BCE700B2B8348DF005048EB /* AppState.swift in Sources */,
 				4B61CD532B6F8601001F79A7 /* ContentView.swift in Sources */,
 				4B61CD512B6F8601001F79A7 /* CounterDemoApp.swift in Sources */,
-				4BC2CD482B7262F000DA464F /* IsPrimeModalView.swift in Sources */,
-				4B1B83422B6FBCE9008E3B88 /* CounterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +285,7 @@
 				DEVELOPMENT_TEAM = 694FHN4V7Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CounterDemo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -324,6 +315,7 @@
 				DEVELOPMENT_TEAM = 694FHN4V7Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CounterDemo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -364,6 +356,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4B79F34D2BA83D9F006348EF /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4B79F34E2BA83D9F006348EF /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B79F34D2BA83D9F006348EF /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4B61CD452B6F8601001F79A7 /* Project object */;
 }
